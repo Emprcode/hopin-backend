@@ -20,13 +20,12 @@ connectDB();
 app.use("/api/v1/cars", CarRouter);
 app.use("/api/v1/booking", CarBookingRouter);
 
-app.use(
-  "/",
+app.use("/", (req, res, next) => {
   res.json({
     status: "success",
     message: "success",
-  })
-);
+  });
+});
 //global error handler
 app.use((error, req, res, next) => {
   const statusCode = error.errorCode || 404;
