@@ -20,6 +20,13 @@ connectDB();
 app.use("/api/v1/cars", CarRouter);
 app.use("/api/v1/booking", CarBookingRouter);
 
+app.use(
+  "/",
+  res.json({
+    status: "success",
+    message: "success",
+  })
+);
 //global error handler
 app.use((error, req, res, next) => {
   const statusCode = error.errorCode || 404;
@@ -30,7 +37,5 @@ app.use((error, req, res, next) => {
 });
 
 app.listen(PORT, (error) => {
-  error
-    ? console.log(error)
-    : console.log(`Server running at http://localhost:${PORT}`);
+  error ? console.log(error) : console.log(`Server running at http://localhost:${PORT}`);
 });
